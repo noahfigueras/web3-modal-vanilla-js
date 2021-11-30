@@ -58,8 +58,8 @@ is to use [https-localhost](https://github.com/daquinoaldo/https-localhost).
 Assuming you have a working Node environment set up on a UNIX
 system you can do:
 
-`npm i -g --only=prod https-localhost`
-`sudo serve .`
+`npm i -g --only=prod https-localhost`  
+`sudo serve .`  
 
 ... in the folder of index.html file.
 
