@@ -22,7 +22,8 @@ commented and short.
 # Usage 
 Edit your example.js file and change `const contractAddress= "YOUR_NFT_CONTRACT_ADDRESS"`.  
 Edit `const ABI` variable with the declaration of your own functions from your contract you want to call.  
-Ex: ```  
+Ex: 
+```  
 const Abi = [  
   // Some details about the token  
   "function symbol() view returns (string)",  
@@ -57,10 +58,8 @@ is to use [https-localhost](https://github.com/daquinoaldo/https-localhost).
 Assuming you have a working Node environment set up on a UNIX
 system you can do:
 
-```sh
-npm i -g --only=prod https-localhost
-sudo serve .
-```
+`npm i -g --only=prod https-localhost`
+`sudo serve .`
 
 ... in the folder of index.html file.
 
