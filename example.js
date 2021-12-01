@@ -56,14 +56,6 @@ function init() {
         infuraId: "8043bb2cf99347b1bfadfb233c5325c0",
       }
     },
-
-    fortmatic: {
-      package: Fortmatic,
-      options: {
-        // Mikko's TESTNET api key
-        key: "pk_test_391E26A3B43A3350"
-      }
-    }
   };
 
   web3Modal = new Web3Modal({
@@ -102,7 +94,7 @@ async function fetchAccountData() {
   document.querySelector("#selected-account").textContent = selectedAccount;
 
   // Get a handl
-  const template = document.querySelector("#template-balance");
+    /* const template = document.querySelector("#template-balance");
   const accountContainer = document.querySelector("#accounts");
 
   // Purge UI elements any previously loaded accounts
@@ -126,6 +118,7 @@ async function fetchAccountData() {
   // with Ethereum node, we do not want to display any results
   // until data for all accounts is loaded
   await Promise.all(rowResolvers);
+    */
 
   // Display fully loaded UI for wallet data
   document.querySelector("#prepare").style.display = "none";
@@ -188,8 +181,7 @@ async function amountLeft() {
  * - User connects wallet initially
  */
 async function refreshAccountData() {
-
-  // If any current data is displayed when
+ // If any current data is displayed when
   // the user is switching acounts in the wallet
   // immediate hide this data
   document.querySelector("#connected").style.display = "none";
