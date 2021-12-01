@@ -25,7 +25,8 @@ const contractAddress = "0xfF50EaBc540B5389dE3a68D86fD8d03aDeDbAD05";
 //Declaration of functions you want to call
 const Abi = [
 "function mint(uint256 _mintAmount) public payable",
-"function whitelisted(address _user) view returns(bool)"
+"function totalSupply() view returns(uint)",
+"function maxAmount() view returns(uint)"
 ];
 // Cost to pass to mint()
 const costToMint = 0.02; //ether 
@@ -163,6 +164,26 @@ async function mint() {
 }
 
 /**
+ * Chek Amount NFT left.
+ */
+async function amountLeft() {
+    //Connect ethers with provider
+    const eth = new ethers.providers.Web3Provider(provider);
+    const signer = eth.getSigner();
+
+    const nftContract = new ethers.Contract(contractAddress, Abi, signer);
+
+    try{
+        const maxAmount = await nftContract.maxAmount();
+        const totalSupply = await nftContract.totalSupply();
+        const _amountLeft = String(maxAmount - totalSupply);
+        // Populate HTML
+        document.querySelector("#amountLeft").textContent = `${_amountLeft}`; 
+    } catch(err) {
+
+    }
+}
+/**
  * Fetch account data for UI when
  * - User switches accounts in wallet
  * - User switches networks in wallet
@@ -214,6 +235,7 @@ async function onConnect() {
   });
 
   await refreshAccountData();
+  await amountLeft();
 }
 
 /**
