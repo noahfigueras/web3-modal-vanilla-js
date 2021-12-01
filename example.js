@@ -26,8 +26,8 @@ const contractAddress = "0xfF50EaBc540B5389dE3a68D86fD8d03aDeDbAD05";
 const Abi = [
 "function mint(uint256 _mintAmount) public payable",
 "function totalSupply() view returns(uint)",
-"function maxAmount() view returns(uint)",
-"function price() view returns(uint)"
+"function maxSupply() view returns(uint)",
+"function cost() view returns(uint)"
 ];
 
 /**
@@ -139,7 +139,7 @@ async function mint() {
     try {
     //Get number of nft to mint
     const amount = Number(document.querySelector("#typeNumber").value);
-    const totalCost = await nftContract.price() * amount;
+    const totalCost = await nftContract.cost() * amount;
 
     const tx = await nftContract.mint(amount,{value: ethers.BigNumber.from(String(totalCost))});
     // Inform user that tx has began
@@ -165,7 +165,7 @@ async function amountLeft() {
     const nftContract = new ethers.Contract(contractAddress, Abi, signer);
 
     try{
-        const maxAmount = await nftContract.maxAmount();
+        const maxAmount = await nftContract.maxSupply();
         const totalSupply = await nftContract.totalSupply();
         const _amountLeft = String(maxAmount - totalSupply);
         // Populate HTML
