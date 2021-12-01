@@ -91,7 +91,7 @@ async function fetchAccountData() {
   console.log("Got accounts", accounts);
   selectedAccount = accounts[0];
 
- document.querySelector("#selected-account").textContent = selectedAccount;
+ document.querySelector("#selected-account").textContent = `${selectedAccount.slice(0,4)}...${selectedAccount.slice(38,42)}`;
 
   // Get a handl
     /* const template = document.querySelector("#template-balance");
